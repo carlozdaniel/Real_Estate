@@ -1,0 +1,24 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV['host_postgres'] %>
+  port: <%= ENV['port_postgres'] %>
+  username: <%= ENV['username_postgres'] %>
+  password: <%= ENV['password_postgres'] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: Real_Estate_development
+
+test:
+  <<: *default
+  database: Real_Estate_test
+
+production:
+  <<: *default
+  database: Real_Estate_production
+  username: Real_Estate
+  password: <%= ENV['Real_Estate_DATABASE_PASSWORD'] %>
+
