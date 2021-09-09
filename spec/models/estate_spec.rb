@@ -28,9 +28,9 @@ RSpec.describe Estate, type: :model do
       should allow_value('dsad-26').for(:external_number)
       should validate_length_of(:external_number).is_at_least(1).is_at_most(12)
     end
-    # it "validate Internal_number" do
-    #   should validate_presence_of(:Internal_number)
-    # end
+    it "validate Internal_number" do
+      should allow_value('ds  d-26').for(:Internal_number)
+    end
     it "validate neighborhood" do
       should validate_length_of(:neighborhood).is_at_least(1).is_at_most(128)
     end
@@ -40,17 +40,13 @@ RSpec.describe Estate, type: :model do
     it "validate country" do
         should validate_inclusion_of(:country).in_array(ISO3166::Country.all.map(&:alpha2))
     end
-    # it "validate country" do
-    #   should validate_presence_of(:country)
-    # end
-    # it "validate rooms" do
-    #   should validate_presence_of(:rooms)
-    # end
+
     it "validate bathrooms" do
       if should validate_inclusion_of(:type).in_array(%w[land commercial_ground].map(&:to_sym))
         should validate_presence_of(:bathrooms)
       end
     end
+
     it "validate comments" do
       should validate_length_of(:comments).is_at_least(1).is_at_most(128)
     end
