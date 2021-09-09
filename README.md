@@ -21,7 +21,6 @@ $ bundle exec figaro install
 
 ##### add this code with your credentials to the application.yml file
 
-Indented 4 spaces, like `<pre>` (Preformatted Text).
 
     development:
 	  username_postgres: postgres
